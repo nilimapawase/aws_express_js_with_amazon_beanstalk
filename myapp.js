@@ -1,26 +1,33 @@
-var express=require("express");
-var app=express();
-var mysql=require("mysql2");
-var port=process.env.PORT || 9595;
+const express = require("express");
+const mysql = require("mysql2");
 
-var con=mysql.createConnection({
-host:"db.cpkqm80282t1.ap-south-1.rds.amazonaws.com",
-user:"awsadmin",
-password:"Nilima#2927",
-database:"collegedb",
-port:3309
+const app = express();
+
+const PORT = process.env.PORT || 9595;
+
+const con = mysql.createConnection({
+    host: "tuesdaydb.cpkqm80282t1.ap-south-1.rds.amazonaws.com",
+    user: "admin",
+    password: "Nilima#2927",
+    database: "companydb",
+    port: 3309
 });
 
-app.get("/api/student",(req,res)=>{
-con.connect(function(err){
-if(err) throw err;
-con.query("select * from students",(err,result)=>{
-if(err) throw err;
-return res.send(result);
-})
-})
-})
+con.connect((err) => {
+    if (err) {
+        console.log(err);
+    } else {
+        console.log("Database Connected");
+    }
+});
 
-app.listen(port,function(){
-console.log("Connected...");
-})
+app.get("/api/student", (req, res) => {
+    con.query("SELECT * FROM students", (err, result) => {
+        if (err) return res.status(500).send(err);
+        res.json(result);
+    });
+});
+
+app.listen(PORT, () => {
+    console.log("Server running on port " + PORT);
+});
