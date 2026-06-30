@@ -25,7 +25,7 @@ res.send(`
 </head>
 <body>
     <h2>Welcome</h2>
-    <h6>hi heelo</h6>
+    <h6>hi hello</h6>
 </body>
 </html>
 `)
