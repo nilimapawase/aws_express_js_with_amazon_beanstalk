@@ -213,12 +213,12 @@
 var express=require("express");
 var app=express();
 
-// var port=process.env.PORT || 9595;
+var port=process.env.PORT || 9595;
 
 app.get("/",function(req,res){
 res.sendFile(__dirname+"/index.html")
 })
 
-app.listen(3000, ()=>{
+app.listen(port, ()=>{
 console.log("Connected...");
 })
