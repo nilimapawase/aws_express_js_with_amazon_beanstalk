@@ -215,7 +215,7 @@ var app=express();
 
 var port=process.env.PORT || 9595;
 
-app.get("/",function(req,res){
+app.get("",function(req,res){
 res.sendFile(__dirname+"/index.html")
 })
 
