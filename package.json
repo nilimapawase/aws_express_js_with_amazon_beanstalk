@@ -3,7 +3,9 @@
   "version": "1.0.0",
   "main": "myapp.js",
   "scripts": {
-    "start": "node myapp.js"
+    "start": "node myapp.js",
+    "build": "echo Build Successful"
+
   },
   "dependencies": {
     "express": "^5.2.1",

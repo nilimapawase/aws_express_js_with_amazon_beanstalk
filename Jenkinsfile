@@ -24,15 +24,14 @@ pipeline {
         }
         stage("Build") {
             steps {
-                bat "npm run build"
+                echo "Express.js application - no build required."
             }
         }
         stage("Deployment") {
             steps {
-                bat "del /q /s C:\\inetpub\\wwwroot\\NodeJsSample\\*"
-                bat "xcopy /E /I /Y build\\* C:\\inetpub\\wwwroot\\NodeJsSample\\"
+                bat "if not exist C:\\inetpub\\wwwroot\\NodeJsSample mkdir C:\\inetpub\\wwwroot\\NodeJsSample"
+                bat "xcopy /E /I /Y * C:\\inetpub\\wwwroot\\NodeJsSample\\"
             }
-
         }
 
     }
